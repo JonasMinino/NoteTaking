@@ -50,6 +50,7 @@ namespace NoteTaking
         /// <summary>
         /// Adds the title and message to the corresponding table columns.
         /// Clears the Title and Message textboxes.
+        /// Edits existing entries.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
