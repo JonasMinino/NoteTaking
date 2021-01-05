@@ -70,5 +70,15 @@ namespace NoteTaking
             }
 
         }
+        /// <summary>
+        /// Deletes the row for the selected cell
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            int index = dgbList.CurrentCell.RowIndex;
+            table.Rows[index].Delete();
+        }
     }
 }
