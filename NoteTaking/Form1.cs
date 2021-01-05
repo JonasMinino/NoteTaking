@@ -41,5 +41,19 @@ namespace NoteTaking
             txtMessage.Clear();
             txtTitle.Clear();
         }
+        /// <summary>
+        /// Adds the title and message to the corresponding table columns.
+        /// Clears the Title and Message textboxes.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            table.Rows.Add(txtTitle.Text, txtMessage.Text);
+
+            txtMessage.Clear();
+            txtTitle.Clear();
+
+        }
     }
 }
