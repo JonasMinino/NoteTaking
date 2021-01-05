@@ -53,6 +53,21 @@ namespace NoteTaking
 
             txtMessage.Clear();
             txtTitle.Clear();
+        }
+        /// <summary>
+        /// Displays the title and message of the current table  cell in the corresponding textbox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnRead_Click(object sender, EventArgs e)
+        {
+            int index = dgbList.CurrentCell.RowIndex;
+            
+            if(index > -1)
+            {
+                txtTitle.Text = table.Rows[index].ItemArray[0].ToString();
+                txtMessage.Text = table.Rows[index].ItemArray[1].ToString();
+            }
 
         }
     }
