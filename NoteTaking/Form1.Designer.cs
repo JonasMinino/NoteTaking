@@ -80,9 +80,13 @@ namespace NoteTaking
             // 
             // dgbList
             // 
+            this.dgbList.AllowUserToAddRows = false;
+            this.dgbList.AllowUserToDeleteRows = false;
             this.dgbList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgbList.Location = new System.Drawing.Point(353, 23);
             this.dgbList.Name = "dgbList";
+            this.dgbList.ReadOnly = true;
+            this.dgbList.RowHeadersVisible = false;
             this.dgbList.Size = new System.Drawing.Size(240, 297);
             this.dgbList.TabIndex = 2;
             // 

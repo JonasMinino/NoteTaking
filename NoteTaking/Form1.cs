@@ -13,6 +13,8 @@ namespace NoteTaking
     public partial class Notepad : Form
     {
         DataTable table;
+        private int index = -1;
+
         public Notepad()
         {
             InitializeComponent();
@@ -29,6 +31,9 @@ namespace NoteTaking
             table.Columns.Add("Message", typeof(string));
 
             dgbList.DataSource = table;
+            dgbList.Columns["Message"].Visible = false;
+            dgbList.Columns["Title"].Width = 240;
+
 
         }
         /// <summary>
@@ -40,6 +45,7 @@ namespace NoteTaking
         {
             txtMessage.Clear();
             txtTitle.Clear();
+            index = -1;
         }
         /// <summary>
         /// Adds the title and message to the corresponding table columns.
@@ -49,7 +55,15 @@ namespace NoteTaking
         /// <param name="e"></param>
         private void btnSave_Click(object sender, EventArgs e)
         {
-            table.Rows.Add(txtTitle.Text, txtMessage.Text);
+            if (index > -1)
+            {
+                table.Rows[index].SetField("Title", txtTitle.Text);
+                table.Rows[index].SetField("Message", txtMessage.Text);
+            }
+            else
+            {
+                table.Rows.Add(txtTitle.Text, txtMessage.Text);
+            }
 
             txtMessage.Clear();
             txtTitle.Clear();
@@ -61,9 +75,9 @@ namespace NoteTaking
         /// <param name="e"></param>
         private void btnRead_Click(object sender, EventArgs e)
         {
-            int index = dgbList.CurrentCell.RowIndex;
-            
-            if(index > -1)
+            index = dgbList.CurrentCell.RowIndex;
+
+            if (index > -1)
             {
                 txtTitle.Text = table.Rows[index].ItemArray[0].ToString();
                 txtMessage.Text = table.Rows[index].ItemArray[1].ToString();
@@ -77,8 +91,12 @@ namespace NoteTaking
         /// <param name="e"></param>
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            int index = dgbList.CurrentCell.RowIndex;
+            index = dgbList.CurrentCell.RowIndex;
+
             table.Rows[index].Delete();
+            txtMessage.Clear();
+            txtTitle.Clear();
         }
+
     }
 }
